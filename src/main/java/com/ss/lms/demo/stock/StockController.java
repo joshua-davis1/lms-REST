@@ -28,9 +28,8 @@ public class StockController {
 
     @PutMapping("/{branchId}/{bookId}")
     public void updateStock(@PathVariable Integer branchId, @PathVariable Integer bookId, @RequestBody Stock stock) {
-        stock.setBranchId(branchId);
-        stock.setBookId(bookId);
-        Boolean success = stockService.update(new StockId(bookId,branchId), stock);
+        stock.setBranchId(branchId); stock.setBookId(bookId);
+        Boolean success = stockService.update(stock);
         System.out.println("Update Success: "+success);
     }
 }

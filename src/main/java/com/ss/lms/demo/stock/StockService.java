@@ -24,8 +24,8 @@ public class StockService {
 
     public void save(Stock stock) { stockRepository.save(stock); }
 
-    public Boolean update(StockId stockId, Stock stock) {
-        if (stockRepository.findById(stockId).isPresent()) {
+    public Boolean update(Stock stock) {
+        if (stockRepository.findById(new StockId(stock.getBookId(), stock.getBranchId())).isPresent()) {
             stockRepository.save(stock);
             return Boolean.TRUE;
         }
