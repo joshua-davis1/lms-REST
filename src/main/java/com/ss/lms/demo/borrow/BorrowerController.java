@@ -26,5 +26,10 @@ public class BorrowerController {
     @PostMapping()
     public void createBorrower(@RequestBody Borrower borrower) { borrowerService.save(borrower) ;}
 
+    @PutMapping("/{id}")
+    public void updateBorrower(@PathVariable Integer id, @RequestBody Borrower borrower) {
+        Boolean success = borrowerService.update(id, borrower);
+        System.out.println("Update Success: "+success);
+    }
 
 }

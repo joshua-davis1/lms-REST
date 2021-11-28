@@ -17,7 +17,20 @@ public class BorrowerService {
 
     public List<Borrower> findAll() { return borrowerRepository.findAll(); }
 
-    public Borrower findById(int id) { return borrowerRepository.findById(id).get(); }
+    public Borrower findById(int id) {
+        if (borrowerRepository.findById(id).isPresent()) return borrowerRepository.findById(id).get();
+        return null;
+    }
 
     public void save(Borrower borrower) { borrowerRepository.save(borrower); }
+
+    public Boolean update(int id, Borrower borrower) {
+        if (borrowerRepository.findById(id).isPresent()) {
+            borrower.setId(id);
+            borrowerRepository.save(borrower);
+            return Boolean.TRUE;
+        }
+        // no borrower found
+        return Boolean.FALSE;
+    }
 }
