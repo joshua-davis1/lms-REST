@@ -19,6 +19,9 @@ public class StockController {
     @GetMapping()
     public List<Stock> findAllStock() { return stockService.findAll(); }
 
+    @GetMapping("/{branchId}")
+    public List<Stock> findByBranchId(@PathVariable Integer branchId) { return stockService.findByBranchId(branchId); }
+
     @GetMapping("/{branchId}/{bookId}")
     @ResponseBody
     public Stock getStockById(@PathVariable Integer branchId, @PathVariable Integer bookId) { return stockService.findById(new StockId(bookId,branchId)); }

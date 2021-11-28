@@ -17,6 +17,8 @@ public class StockService {
 
     public List<Stock> findAll() { return stockRepository.findAll(); }
 
+    public List<Stock> findByBranchId(Integer branchId) { return stockRepository.findByBranchId(branchId); }
+
     public Stock findById(StockId stockId) {
         if (stockRepository.findById(stockId).isPresent()) return stockRepository.getById(stockId);
         return null;
