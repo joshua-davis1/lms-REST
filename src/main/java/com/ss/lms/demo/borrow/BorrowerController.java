@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/borrower")
+@RequestMapping(path="api/customer")
 public class BorrowerController {
 
     private final BorrowerService borrowerService;
@@ -26,9 +26,9 @@ public class BorrowerController {
     @PostMapping()
     public void createBorrower(@RequestBody Borrower borrower) { borrowerService.save(borrower) ;}
 
-    @PutMapping("/{id}")
-    public void updateBorrower(@PathVariable Integer id, @RequestBody Borrower borrower) {
-        Boolean success = borrowerService.update(id, borrower);
+    @PutMapping("/{cardNo}")
+    public void updateBorrower(@PathVariable Integer cardNo, @RequestBody Borrower borrower) {
+        Boolean success = borrowerService.update(cardNo, borrower);
         System.out.println("Update Success: "+success);
     }
 

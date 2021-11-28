@@ -19,14 +19,14 @@ public class AuthorController {
     @GetMapping()
     public List<Author> getAuthors() { return authorService.findAll(); }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{authorId}")
     @ResponseBody
-    public Author findById(@PathVariable Integer id) { return authorService.findById(id); }
+    public Author findById(@PathVariable Integer authorId) { return authorService.findById(authorId); }
 
     @PostMapping
     public void createAuthor(@RequestBody Author author) { authorService.save(author); }
 
-    @PutMapping("/{id}")
-    public void updateAuthor(@PathVariable Integer id, @RequestBody Author author) { authorService.update(id, author); }
+    @PutMapping("/{authorId}")
+    public void updateAuthor(@PathVariable Integer authorId, @RequestBody Author author) { authorService.update(authorId, author); }
 
 }

@@ -27,9 +27,9 @@ public class BranchController {
     @GetMapping()
     public List<Branch> findAll() { return branchService.findAll(); }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{branchId}")
     @ResponseBody
-    public Branch findById(@PathVariable Integer id) { return branchService.findById(id); }
+    public Branch findById(@PathVariable Integer branchId) { return branchService.findById(branchId); }
 
     @GetMapping("/{branchId}/loans")
     @ResponseBody
@@ -42,9 +42,9 @@ public class BranchController {
     @PostMapping()
     public void createBranch(@RequestBody Branch branch) { branchService.save(branch); }
 
-    @PutMapping("/{id}")
-    public void updateBranch(@PathVariable Integer id, @RequestBody Branch branch) {
-        Boolean success = branchService.update(id, branch);
+    @PutMapping("/{branchId}")
+    public void updateBranch(@PathVariable Integer branchId, @RequestBody Branch branch) {
+        Boolean success = branchService.update(branchId, branch);
         System.out.println("Update Success: "+success);
     }
 }
