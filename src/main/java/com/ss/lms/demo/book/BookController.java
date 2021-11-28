@@ -25,8 +25,15 @@ public class BookController {
 
     @PostMapping()
     public void createBook(@RequestBody Book book) {
-        System.out.println(book);
+        book.setId(null);  // stops an illegal update
         bookService.save(book);
+        System.out.println("Creation Success: "+ true);
+    }
+
+    @PutMapping("/{id}")
+    public void updateBook(@PathVariable Integer id, @RequestBody Book book) {
+        Boolean success = bookService.update(id, book);
+        System.out.println("Update Success: "+success);
     }
 
 }

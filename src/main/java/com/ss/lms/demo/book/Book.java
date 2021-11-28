@@ -17,7 +17,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private int id;
+    private Integer id;
     private String title;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "pub_id", nullable = false)
@@ -38,7 +38,7 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id;
+        return id.equals(book.id);
     }
 
     @Override
@@ -46,11 +46,11 @@ public class Book {
         return Objects.hash(id);
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
