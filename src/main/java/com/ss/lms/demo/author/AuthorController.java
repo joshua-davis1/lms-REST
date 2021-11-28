@@ -26,7 +26,7 @@ public class AuthorController {
     @PostMapping
     public void createAuthor(@RequestBody Author author) { authorService.save(author); }
 
-//    @PutMapping("/{id}")
-//    public void updateAuthor(@PathVariable Integer id, @RequestBody Author author) { authorService.update(author); }
+    @PutMapping("/{id}")
+    public void updateAuthor(@PathVariable Integer id, @RequestBody Author author) { authorService.update(id, author); }
 
 }
