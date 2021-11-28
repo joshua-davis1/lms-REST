@@ -1,5 +1,9 @@
 package com.ss.lms.demo.branch;
 
+import com.ss.lms.demo.loans.Loan;
+import com.ss.lms.demo.loans.LoanService;
+import com.ss.lms.demo.stock.Stock;
+import com.ss.lms.demo.stock.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +14,14 @@ import java.util.List;
 public class BranchController {
 
     private final BranchService branchService;
+    private final LoanService loanService;
+    private final StockService stockService;
 
     @Autowired
-    public BranchController(BranchService branchService) {
+    public BranchController(BranchService branchService, LoanService loanService, StockService stockService) {
         this.branchService = branchService;
+        this.loanService = loanService;
+        this.stockService = stockService;
     }
 
     @GetMapping()
@@ -22,6 +30,14 @@ public class BranchController {
     @GetMapping("/{id}")
     @ResponseBody
     public Branch findById(@PathVariable Integer id) { return branchService.findById(id); }
+
+    @GetMapping("/{branchId}/loans")
+    @ResponseBody
+    public List<Loan> findAllBranchLoans(@PathVariable Integer branchId) { return loanService.findAllByBranchId(branchId); }
+
+    @GetMapping("/{branchId}/inventory")
+    @ResponseBody
+    public List<Stock> findAllBranchBooks(@PathVariable Integer branchId) { return stockService.findByBranchId(branchId); }
 
     @PostMapping()
     public void createBranch(@RequestBody Branch branch) { branchService.save(branch); }

@@ -1,7 +1,9 @@
 package com.ss.lms.demo.book;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ss.lms.demo.author.Author;
 import com.ss.lms.demo.publisher.Publisher;
+import com.ss.lms.demo.stock.Stock;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -27,6 +29,9 @@ public class Book {
             joinColumns = { @JoinColumn(name = "bookId") },
             inverseJoinColumns = { @JoinColumn(name = "authorId") })
     private Set<Author> authors = new HashSet<>();
+    @JsonBackReference
+    @OneToMany(mappedBy = "book")
+    Set<Stock> inventory;
 
     public Book(String title, Publisher publisher) {
         this.title = title;
@@ -80,6 +85,14 @@ public class Book {
 
     public void addAuthor(Author author) {
         this.authors.add(author);
+    }
+
+    public Set<Stock> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Set<Stock> inventory) {
+        this.inventory = inventory;
     }
 
     @Override
