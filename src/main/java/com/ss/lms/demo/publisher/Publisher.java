@@ -20,9 +20,13 @@ public class Publisher {
     }
 
     @Id
+    @Column(name = "publisherId")
     private int id;
+    @Column(name = "publisherName")
     private String name;
+    @Column(name = "publisherAddress")
     private String address;
+    @Column(name = "publisherPhone")
     private String phone;
     @JsonBackReference
     @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY,

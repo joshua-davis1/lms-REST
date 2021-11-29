@@ -7,7 +7,6 @@ import com.ss.lms.demo.stock.Stock;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -18,24 +17,24 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "bookId", unique = true, nullable = false)
     private Integer id;
+    @Column(name = "bookTitle")
     private String title;
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "pub_id", nullable = false)
+    @JoinColumn(name = "publisher_id", nullable = false)
     private Publisher publisher;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "tblBookAuthors",
-            joinColumns = { @JoinColumn(name = "bookId") },
-            inverseJoinColumns = { @JoinColumn(name = "authorId") })
-    private Set<Author> authors = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "author_id", nullable = false)
+    private Author author;
     @JsonBackReference
     @OneToMany(mappedBy = "book")
     Set<Stock> inventory;
 
-    public Book(String title, Publisher publisher) {
+    public Book(String title, Publisher publisher, Author author) {
         this.title = title;
         this.publisher = publisher;
+        this.author = author;
     }
 
     @Override
@@ -75,16 +74,12 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public Set<Author> getAuthors() {
-        return authors;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthors(Set<Author> authors) {
-        this.authors = authors;
-    }
-
-    public void addAuthor(Author author) {
-        this.authors.add(author);
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public Set<Stock> getInventory() {
@@ -101,7 +96,7 @@ public class Book {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", publisher=" + publisher +
-                ", authors=" + authors +
+                ", author=" + author +
                 '}';
     }
 }

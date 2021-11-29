@@ -1,12 +1,12 @@
 package com.ss.lms.demo.borrow;
 
+import com.ss.lms.demo.loans.Loan;
+import com.ss.lms.demo.stock.Stock;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @NoArgsConstructor
 @Entity(name="Borrower")
@@ -19,6 +19,8 @@ public class Borrower {
     private String name;
     private String address;
     private String phone;
+    @OneToMany(mappedBy = "borrower")
+    Set<Loan> loans;
 
     public Borrower(String name, String address, String phone) {
         this.name = name;
@@ -69,6 +71,14 @@ public class Borrower {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Set<Loan> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(Set<Loan> loans) {
+        this.loans = loans;
     }
 
     @Override

@@ -23,6 +23,10 @@ public class Loan {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "branchId", nullable = false, insertable = false, updatable = false)
     private Branch branch;
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "cardNo", nullable = false, insertable = false, updatable = false)
+    private Borrower borrower;
 
     public Loan(LoanId loanId, LocalDate dateIn, LocalDate dateOut, LocalDate dueDate) {
         this.loanId = loanId;

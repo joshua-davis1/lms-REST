@@ -15,8 +15,11 @@ public class Branch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "branchId")
     private Integer id;
+    @Column(name = "branchName")
     private String name;
+    @Column(name = "branchAddress")
     private String address;
     @OneToMany(mappedBy = "branch")
     Set<Loan> loans;

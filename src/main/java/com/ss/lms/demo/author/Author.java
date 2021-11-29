@@ -1,12 +1,9 @@
 package com.ss.lms.demo.author;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.ss.lms.demo.book.Book;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
 @NoArgsConstructor
 @Entity(name="Author")
@@ -14,13 +11,10 @@ import java.util.Set;
 public class Author {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "authorId")
     private int id;
-    @Column(name = "name")
+    @Column(name = "authorName")
     private String name;
-    @JsonBackReference
-    @ManyToMany(mappedBy = "authors")
-    Set<Book> books;
 
     @Override
     public boolean equals(Object o) {
@@ -55,20 +49,11 @@ public class Author {
         this.name = name;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
-
     @Override
     public String toString() {
         return "Author{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", books=" + books +
                 '}';
     }
 }
