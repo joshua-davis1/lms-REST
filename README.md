@@ -29,4 +29,4 @@ All uris are preceded with `api/`.
 | /author/{authorId} | :+1: | :-1: | :+1: | :-1: |
 
 ## ER
-![ER design pattern](https://i.ibb.co/Wxp2xxZ/err.png)
+![ER design pattern](https://i.ibb.co/8MJQSdm/er.png)
