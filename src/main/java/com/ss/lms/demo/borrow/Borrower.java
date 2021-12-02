@@ -1,7 +1,6 @@
 package com.ss.lms.demo.borrow;
 
 import com.ss.lms.demo.loans.Loan;
-import com.ss.lms.demo.stock.Stock;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
