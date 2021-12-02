@@ -30,7 +30,12 @@ All uris are preceded with `api/`.
 | /author/{authorId} | :+1: | :-1: | :+1: | :-1: |
 
 </p>
+
 ## ER
+
 <p align="center">
   <img src="https://i.ibb.co/kHvWXJN/er.png" alt="er design"/>
 </p>
+
+## Docker
+https://hub.docker.com/repository/docker/joshuad23/spring-booter
