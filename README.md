@@ -8,6 +8,7 @@ A simple and clean Spring Rest API solution for a Library Management System.
 ## Endpoints
 
 All uris are preceded with `api/`.
+<p align="center">
 
 | Url | GET | POST | PUT | DELETE |
 | :---| :---: | :---: | :---: | :---: | 
@@ -28,6 +29,7 @@ All uris are preceded with `api/`.
 | /author | :+1: | :+1: | :-1: | :-1: |
 | /author/{authorId} | :+1: | :-1: | :+1: | :-1: |
 
+</p>
 ## ER
 <p align="center">
   <img src="https://i.ibb.co/kHvWXJN/er.png" alt="er design"/>
